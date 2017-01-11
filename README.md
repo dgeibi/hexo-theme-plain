@@ -1,3 +1,5 @@
+# hexo-theme-plain
+
 ## 简介
 
 Plain 是一个 [Hexo](https://hexo.io) 主题，基于 Pug 与 Scss 开发。
