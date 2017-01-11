@@ -1,0 +1,17 @@
+extends _base.pug
+
+block content
+  article.site-home
+    .one
+      each post in page.posts.toArray()
+          +item(post)
+      p P#{page.current}
+        if page.total > 1
+          if page.next
+            | &nbsp;
+            a(href=url_for(page.next_link)) #{__('next')}
+          if page.prev
+            | &nbsp;
+            a(href=url_for(page.prev_link)) #{__('prev')}  
+    .two
+      include _widget/tag.pug

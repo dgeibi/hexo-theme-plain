@@ -1,0 +1,33 @@
+/**
+ * Post List
+ */
+
+.post-item {
+    font-size: 20px;
+    > .meta {
+        font-size: .8em;
+    }
+    &:not(:last-child){
+        margin-bottom: .7em;
+    }
+}
+
+.archive-item {
+    font-size: 1.1em;
+    position: relative;
+    > .meta {
+        position: absolute;
+        // left: 5px;
+        // top: 6px;
+        font-size: .7em;
+        line-height: 2;
+    }
+
+    > .linkwrapper {
+        margin-left: 3em;
+    }
+
+    &:not(:last-child){
+        margin-bottom: .4em;
+    }
+}

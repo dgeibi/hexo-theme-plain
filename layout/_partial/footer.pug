@@ -1,0 +1,20 @@
+- min = moment().year()
+- max = moment().year()
+each post in site.posts.toArray()
+  - min = Math.min(post.date.year(), min)
+  - max = Math.max(post.date.year(), max)
+footer.site-footer
+  section
+    small
+      | &copy; #{min}-#{max}
+      |  #{config.author} 
+      a(href="https://creativecommons.org/licenses/by/4.0/") CC BY 4.0
+  section
+    small
+      | Powered by 
+      a(href="https://hexo.io") Hexo
+      | . Theme by 
+      a(href="https://github.com/dgeibi") dgeibi
+      | .
+
+  

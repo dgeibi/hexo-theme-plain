@@ -1,0 +1,19 @@
+/**
+ * Page
+ */
+.page-content {
+    width: 100%;
+    margin: 0;
+    padding: $spacing-unit 0;
+
+    .wrapper .post-list {
+        margin-left: 0;
+    }
+    .wrapper .comment-btn {
+        margin: 5px auto;
+    }
+}
+
+.page-heading {
+    font-size: 20px;
+}

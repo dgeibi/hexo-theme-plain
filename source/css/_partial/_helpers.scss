@@ -1,0 +1,47 @@
+@mixin clearfix {
+    overflow: auto;
+    zoom: 1;
+}
+
+._unselectable {
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+._unmargin {
+    margin: 0 !important;
+}
+
+._center {
+    text-align: center !important;
+}
+
+._pull-left {
+    float: left !important;
+}
+
+._pull-right {
+    float: right !important;
+}
+
+._vertical-rhythm {
+    margin-bottom: $spacing-unit / 2;
+}
+
+._plain-link {
+    &,
+    &:hover,
+    &:visited {
+        background: none!important;
+    }
+}
+
+._grey-color {
+    color: $grey-color !important;
+}
+
+._table-wrapper {
+    margin-bottom: $spacing-unit/2;
+    overflow: auto;
+}

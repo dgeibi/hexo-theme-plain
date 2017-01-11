@@ -1,0 +1,47 @@
+/**
+ * Toc
+ */
+.toc-src {
+    counter-reset: section;
+
+    h2 {
+        counter-reset: subsection;
+    }
+
+    h2::before {
+        counter-increment: section;
+        content: counter(section) ". ";
+    }
+
+    h3::before {
+        counter-increment: subsection;
+        content: counter(section) "." counter(subsection) ". ";
+    }
+}
+
+#toc {
+    .heading {
+        font-size: 1.4em;
+        line-height: 1.2;
+    }
+
+    .toc,.toc-child {
+        list-style: none;
+        margin: 0 0 0 1em
+    }
+
+    .toc-item {
+        margin: 0
+    }
+
+    font-size: 18px;
+    line-height: 1.7;
+    border-radius: .4em;
+    border: 1px solid #eee;
+    padding: .5em;
+    margin: 0 0 1em 0;
+    @media screen and (min-width: $on-palm) {
+        float: right;
+        margin-left: 1em;
+    }
+}

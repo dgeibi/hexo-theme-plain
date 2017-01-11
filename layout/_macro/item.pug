@@ -1,0 +1,38 @@
+mixin item(atom)
+  section.post-item
+    time.meta(datetime=date(atom.date, 'YYYY-MM-DDTHH:mm:ssZ'))
+        = date(atom.date, config.dateformat)
+    .linkwrapper
+      a(href=url_for(atom.path)) #{atom.title}
+mixin archive-item(atom)
+  section.archive-item
+    time.meta(datetime=date(atom.date, 'YYYY-MM-DDTHH:mm:ssZ'))
+        = date(atom.date, 'MM-DD')
+    .linkwrapper
+      a(href=url_for(atom.path)) #{atom.title}
+
+mixin meta(page)
+  section.meta
+    | #{__('postat')} 
+    time(datetime=date(page.date, 'YYYY-MM-DDTHH:mm:ssZ'))
+        = date(page.date, config.date_format) 
+    | &nbsp;|&nbsp;
+    | #{__('editat')} 
+    time(datetime=date(page.updated, 'YYYY-MM-DDTHH:mm:ssZ'))
+        = date(page.updated, config.date_format)
+  section.meta
+    - var categories = page.categories ? page.categories.toArray():[]
+    if categories.length
+      | #{__('categories')}:
+      each category in categories
+        | &nbsp;
+        span
+          a(href=url_for(category.path)) #{category.name}
+  section.meta
+    - var tags = page.tags?page.tags.toArray():[]
+    if tags.length
+      | #{__('tags')}: 
+      each tag in tags
+        | &nbsp;
+        span
+          a(href=url_for(tag.path)) ##{tag.name}

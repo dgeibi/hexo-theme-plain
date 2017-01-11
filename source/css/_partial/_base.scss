@@ -1,0 +1,216 @@
+/**
+ * Reset some basic elements
+ */
+blockquote,
+body,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+html,
+ol,
+p,
+pre,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+/**
+ * Basic styling
+ */
+body {
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+    color: $text-color;
+    background-color: $background-color;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "kern" 1;
+    -moz-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+
+blockquote,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+p,
+ul {
+    @extend ._vertical-rhythm;
+}
+
+/**
+ * Images
+ */
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+/**
+ * Figures
+ */
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: $small-font-size;
+}
+/**
+ * Lists
+ */
+ol,
+ul {
+    margin-left: $spacing-unit;
+}
+
+ul {
+    list-style: square inside url('data:image/gif;base64,R0lGODlhBQAKAIABAAAAAP///yH5BAEAAAEALAAAAAAFAAoAAAIIjI+ZwKwPUQEAOw==');
+}
+
+li:not(:last-of-type) {
+    margin-bottom: 4px;
+}
+
+li {
+     > ol,
+    > ul {
+        margin-bottom: 0;
+    }
+}
+/**
+ * Headings
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $base-font-weight;
+    word-wrap: break-word;
+}
+
+h2 {
+    font-size: 23px;
+}
+
+h3 {
+    font-size: 21px;
+}
+
+h4 {
+    font-size: 19px;
+}
+/**
+ * Links
+ */
+
+
+a {
+    color: $grey-color-dark;
+    text-decoration: none;
+    &:hover {
+        color: $brand-color;
+    }
+}
+/**
+ * Blockquotes
+ */
+blockquote {
+    color: $grey-color;
+    border-left: 4px solid $grey-color-light;
+    padding-left: $spacing-unit / 2;
+    font-size: 18px;
+    letter-spacing: -1px;
+    font-style: italic;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+/**
+ * Code formatting
+ */
+code,
+kbd,
+pre,
+samp,
+tt {
+    font-family: $monospace-font-family;
+    font-size: 1em;
+}
+
+code,
+pre {
+    font-size: 16px;
+    border-radius: 2px;
+    background-color: $code-background-color;
+}
+
+code {
+    padding: 1px 5px;
+}
+
+pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+
+    > code {
+        border: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+/**
+ * Tables
+ */
+
+table {
+    min-width: 500px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    vertical-align: bottom;
+    font-weight: bold;
+}
+
+td {
+    vertical-align: middle;
+    border-top: 0.0625em solid #e0e0e0;
+}
+
+td,
+th {
+    text-align: left;
+    padding: 0.625em;
+}

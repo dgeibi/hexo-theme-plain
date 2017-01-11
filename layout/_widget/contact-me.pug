@@ -1,0 +1,17 @@
+div._vertical-rhythm
+    small.meta #{__('follow-me')}：
+    a._plain-link(href="https://twitter.com/"+theme.twitter)
+        svg(role="img" class="icon")
+            use(xlink:href="/icon.svg#twitter")
+        <!--[if lt IE 9]>Twitter<![endif]-->
+    a._plain-link(href="https://github.com/"+theme.twitter)
+        svg(role="img" class="icon")
+            use(xlink:href="/icon.svg#github")
+        <!--[if lt IE 9]>GitHub<![endif]-->
+    br
+    small.meta #{__('contact-me')}：
+    a._plain-link(href="mailto:"+ theme.email)
+        svg(role="img" class="icon")
+            use(xlink:href="/icon.svg#mail")
+        <!--[if lt IE 9]>Email<![endif]-->
+!= js('js/svg4everybody.js')

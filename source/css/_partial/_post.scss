@@ -1,0 +1,52 @@
+/**
+ * Posts
+ */
+.post {
+     > .post-header,
+    > .post-content {
+        margin-bottom: $spacing-unit;
+    }
+}
+
+.post-title {
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+$underline-color: $grey-color;
+.post-content {
+     > h2,
+     > h4,
+    > h3 {
+        color: darken($brand-color, 10%);
+
+        > a {
+            color: darken($brand-color, 10%);
+        }
+
+        > a:hover {
+            color: $brand-color;
+        }
+    }
+
+    > p {
+        line-height: 1.8;
+    }
+
+    a {
+        background: -webkit-linear-gradient($underline-color, $underline-color) no-repeat;
+        background: -o-linear-gradient($underline-color, $underline-color) no-repeat;
+        background: linear-gradient($underline-color, $underline-color) no-repeat;
+        background-size: 100% 1px;
+        background-position: 0 1.15em;
+        text-shadow: .05em 0 white, -.05em 0 white;
+        &:hover {
+            background: -webkit-linear-gradient($brand-color, $brand-color) no-repeat;
+            background: -o-linear-gradient($brand-color, $brand-color) no-repeat;
+            background: linear-gradient($brand-color, $brand-color) no-repeat;
+            background-size: 100% 1px;
+            background-position: 0 1.15em;
+        }
+    }
+}

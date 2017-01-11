@@ -1,0 +1,21 @@
+meta(charset='utf-8')
+- var title = ''
+- if (is_tag()) title += __('tags') + ': ' + page.tag + ' | '
+- else if (is_category()) title += __('categories') + ': ' + page.category + ' | '
+- else if (is_archive()) title += __('archives') + ' | '
+- else if (page.title) title += page.title + ' | '
+- title += config.title
+
+title #{title}
+
+meta(name='author', content=page.author ? page.author : config.author)
+meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport')
+meta(name="renderer" content="webkit|ie-comp|ie-stand")
+link(rel='stylesheet' href='/css/style.css')
+link(rel='alternate', type='application/atom+xml', title='RSS', href='/atom.xml')
+link(rel='sitemap', type='application/xml', title='Sitemap', href='/sitemap.xml')
+link(rel='canonical', href=url)
+link(rel="icon" type="image/png" href="/favicon.png")
+link(rel="apple-touch-icon" sizes="256x256" href="/favicon.png")
+link(rel="manifest" href="/manifest.json")
+script(src="/js/main.js" defer)

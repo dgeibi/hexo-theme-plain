@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+$monospace-font-family: "Iosevka Slab", "Andale Mono", "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
+$chinese-font-family: 'Noto Sans CJK SC', 'Source Han Sans SC', 'Source Han Sans CN', 'Inziu Roboto SC', PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft YaHei', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei;
+$base-font-family: "Noto Serif", 'Palatino Linotype', 'Book Antiqua', Palatino, Times, 'Times New Roman', Bookman, Georgia, 'New Century Schoolbook', $chinese-font-family, serif;
+$base-font-size:   17px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+$slide-width: 240px;
+$spacing-unit:     30px;
+$text-color:       #111;
+$background-color: #fff;
+$code-background-color: #f3f3f3;
+$brand-color:      #3F75C4;
+$grey-color:       #828282;
+$header-height:    50px;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+$content-width:    800px;
+$on-palm:          600px;
+$on-laptop:        800px;
+
+
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+@import
+        "_partial/back-to-top",
+        "_partial/base",
+        "_partial/helpers",
+        "_partial/icon",
+        "_partial/meta",
+        "_partial/page",
+        "_partial/post",
+        "_partial/post-list",
+        "_partial/site",
+        "_partial/syntax-highlighting",
+        "_partial/toc",
+        "_partial/wrapper",
+        "_partial/widget"
+;

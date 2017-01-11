@@ -1,0 +1,6 @@
+extends _base.pug
+
+block content
+  p #{__('categories')} - #{page.category}
+  each post in page.posts.toArray()
+    +item(post)

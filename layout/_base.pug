@@ -1,0 +1,12 @@
+include _macro/item.pug
+doctype html
+html(lang=config.language, manifest='/mono.appcache')
+  head
+    include _partial/head.pug
+  body
+    include _partial/header.pug    
+    main.page-content
+      .wrapper
+        block content
+    include _partial/footer.pug
+    include _widget/backtotop.pug

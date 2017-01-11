@@ -1,0 +1,75 @@
+/**
+ * Site
+ */
+.site-header {
+    border-bottom: 1px solid $grey-color-light;
+    width: 100%;
+
+    > .wrapper > .site-title {
+        margin: 0 -5px;
+    }
+
+    > .wrapper {
+        white-space: nowrap;
+    }
+}
+
+.site-nav {
+    font-size: 18px;
+    float: right;
+    bottom: 0;
+}
+
+.nav-item {
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    margin: 0 .4em;
+}
+
+.site-title {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    display: inline-block;
+}
+
+.nav-item, .site-title {
+    line-height: $header-height;
+    height: $header-height;    
+}
+
+.site-footer {
+    width: 100%;
+    border-top: 1px solid $grey-color-light;
+    padding: $spacing-unit/2 0;
+    text-align: center;
+}
+
+.site-home {
+    // @include clearfix;
+
+    > .one {
+        width: 60%;
+        float: left;
+        // margin-right: $spacing-unit;
+    }
+
+    > .two {
+        float: right;
+        max-width: 35%;
+    }
+
+    @include media-query($on-palm) {
+        >.one,>.two {            
+            width: 95%;
+            float: left;
+        }
+        >.one {
+            margin-bottom: 1em;
+        }
+        >.two {
+            max-width: unset;
+        }
+    }
+}

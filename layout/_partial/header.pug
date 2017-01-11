@@ -1,0 +1,7 @@
+header.site-header
+  .wrapper
+    a.site-title(href=config.root) #{config.title}
+    
+    nav.site-nav
+      each path, name in theme.menu
+        a.nav-item(href=url_for(path)) #{__(name)} 
