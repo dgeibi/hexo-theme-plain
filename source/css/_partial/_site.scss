@@ -3,40 +3,26 @@
  */
 .site-header {
     border-bottom: 1px solid $grey-color-light;
-    width: 100%;
+    overflow: hidden;
 
-    > .wrapper > .site-title {
+    .site-title, .site-nav {
         margin: 0 -5px;
     }
-
-    > .wrapper {
-        white-space: nowrap;
-    }
-}
-
-.site-nav {
-    font-size: 18px;
-    float: right;
-    bottom: 0;
 }
 
 .nav-item {
     box-sizing: border-box;
     text-align: center;
     display: inline-block;
-    margin: 0 .4em;
+    padding: .5em .9em;
 }
 
 .site-title {
     font-size: 24px;
     font-weight: 300;
     letter-spacing: -1px;
-    display: inline-block;
-}
-
-.nav-item, .site-title {
-    line-height: $header-height;
-    height: $header-height;    
+    height: $header-height; 
+    line-height: $header-height;   
 }
 
 .site-footer {
@@ -47,12 +33,9 @@
 }
 
 .site-home {
-    // @include clearfix;
-
     > .one {
         width: 60%;
         float: left;
-        // margin-right: $spacing-unit;
     }
 
     > .two {
