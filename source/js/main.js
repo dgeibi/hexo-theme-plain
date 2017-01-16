@@ -47,7 +47,8 @@ Util.$ = function(selector, context) {
 };
 
 self.$ = self.$ || Util;
-self.$$ = self.$$ || Util.$;//= require Util
+self.$$ = self.$$ || Util.$;
+//= require Util
 /* external links */
 Array.prototype.forEach.call(document.links, function(link) {
     if (link.hostname != location.hostname) {

@@ -1,0 +1,27 @@
+{
+  "name": "hexo-theme-plain",
+  "version": "1.0.0",
+  "description": "a plain hexo theme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgeibi/hexo-theme-plain.git"
+  },
+  "keywords": [
+    "hexo",
+    "theme"
+  ],
+  "author": "dgeibi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgeibi/hexo-theme-plain/issues"
+  },
+  "homepage": "https://github.com/dgeibi/hexo-theme-plain#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-replace": "^0.5.4"
+  }
+}
