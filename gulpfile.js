@@ -6,7 +6,7 @@ gulp.task("default", ['js', 'sw']);
 
 gulp.task("sw", function () {
   return gulp.src('source/sw.js')
-    .pipe(replace(/#\d*/, '#' + Math.ceil(Math.random() * 1000000)))
+    .pipe(replace(/#\d*/, '#' + Date.now()))
     .pipe(gulp.dest('source'));
 })
 
