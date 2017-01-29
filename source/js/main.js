@@ -48,16 +48,24 @@ Util.$ = function(selector, context) {
 
 self.$ = self.$ || Util;
 self.$$ = self.$$ || Util.$;
-//= require Util
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+        .then(function (reg) {
+            console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch(function (error) {
+            console.log('Registration failed with ' + error);
+        });
+}
+
 /* external links */
-Array.prototype.forEach.call(document.links, function(link) {
+Array.prototype.forEach.call(document.links, function (link) {
     if (link.hostname != location.hostname) {
         link.target = '_blank';
     }
 });
 
 /* add table-wrapper */
-$$('.post-content>table').forEach(function(table) {
+$$('.post-content>table').forEach(function (table) {
     var div = document.createElement("div");
     div.className = "_table-wrapper";
     var range = document.createRange();
@@ -66,9 +74,9 @@ $$('.post-content>table').forEach(function(table) {
 });
 
 /* back to top */
-(function() {
+(function () {
     var topBtn = $('[data-js-backtotop]');
-    var backToTop = function() {
+    var backToTop = function () {
         if (window.pageYOffset > 100) {
             topBtn.classList.add('show');
         } else {
@@ -81,8 +89,8 @@ $$('.post-content>table').forEach(function(table) {
 })();
 
 /* toc scroll */
-$$('.toc li a').forEach(function(link) {
-    link.addEventListener('click', function(event) {
+$$('.toc li a').forEach(function (link) {
+    link.addEventListener('click', function (event) {
         event.preventDefault();
         var hash = this.hash;
         $.scrollToPos(hash, 700);
