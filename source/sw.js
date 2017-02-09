@@ -1,15 +1,12 @@
-//https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
-var CACHE_NAME = '#1486635876181';
+var CACHE_NAME = '#1486649026431';
 var urlsToCache = [
   '/css/style.css',
   '/js/main.js',
   '/js/svg4everybody.js',
-  '/icon.svg'
+  '/icon.svg',
+  '/404.html'
 ];
-
-var BLACKLIST = [
-  '/',
-];
+var cachePathPattern = /^(https?:\/\/.+)?\/(about|20\d{2}|css|js|assets)\/(.+)$/
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
@@ -33,27 +30,18 @@ self.addEventListener('fetch', function (event) {
         return fetch(fetchRequest).then(
 
           function (response) {
-            var shouldCache = true;
-
-            for (var i = 0; i < BLACKLIST.length; i++) {
-              var regExp = new RegExp(BLACKLIST[i]);
-              if (regExp.test(fetchRequest.url)) {
-                shouldCache = false;
-                break;
-              }
+            var shouldCache = false
+            if (fetchRequest.url) {
+              shouldCache = cachePathPattern.test(fetchRequest.url)
             }
-
             if (!shouldCache || !response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
-
-            var responseToCache = response.clone();
-
+            var responseToCache = response.clone()
             caches.open(CACHE_NAME)
               .then(function (cache) {
                 cache.put(event.request, responseToCache);
               });
-
             return response;
           }
         );
