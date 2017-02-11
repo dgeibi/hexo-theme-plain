@@ -21,7 +21,6 @@
   "homepage": "https://github.com/dgeibi/hexo-theme-plain#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-replace": "^0.5.4"
+    "gulp-concat": "^2.6.1"
   }
 }
