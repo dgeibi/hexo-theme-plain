@@ -53,12 +53,6 @@ main {
 blockquote,
 dl,
 figure,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 ol,
 p,
 ul {
@@ -115,6 +109,7 @@ h5,
 h6 {
     font-weight: $base-font-weight;
     word-wrap: break-word;
+    line-height: 1.5;
 }
 
 h2 {

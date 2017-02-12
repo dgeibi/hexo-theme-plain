@@ -1,4 +1,7 @@
-const ASSETS_CACHE = "assets-v1"
+// vecka.14islands.com/service-worker.js
+// https://github.com/14islands/vecka.14islands.com/blob/master/server/service-worker.js
+
+const ASSETS_CACHE = "assets-v2"
 const PAGES_CACHE = "pages-v1"
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
 const urlsToCache = [
@@ -6,11 +9,9 @@ const urlsToCache = [
   '/js/main.js',
   '/js/svg4everybody.js',
   '/icon.svg',
-  '/404.html',
+  '/offline.html',
   '/manifest.json'
 ]
-const pagePathPattern = /^\/(archives|about|20\d{2})\/(.*)$/
-const assetPathPattern = /^\/(css|js|assets)\/(.+)$/
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
@@ -23,37 +24,17 @@ self.addEventListener('install', function (event) {
 })
 
 self.addEventListener('fetch', function (event) {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      if (response) {
-        return response;
-      }
-      var fetchRequest = event.request.clone();
-      return fetch(fetchRequest).then(
-        response => {
-          function putCache(res, key) {
-            var responseToCache = res.clone()
-            caches.open(key)
-              .then(function (cache) {
-                cache.put(event.request, responseToCache);
-              })
-          }
-          if (!response || !response.ok || response.type !== 'basic') {
-            return response;
-          }
-          if (fetchRequest.url) {
-            var url = new URL(fetchRequest.url)
-            if (pagePathPattern.test(url.pathname)) {
-              putCache(response, PAGES_CACHE)
-            } else if (assetPathPattern.test(url.pathname)) {
-              putCache(response, ASSETS_CACHE)
-            }
-          }
-          return response;
-        }
-      );
-    })
-  );
+  if (shouldHandleFetch(event.request)) {
+    var url = new URL(event.request.url)
+    if (/^\/(about|20\d{2})\/.*$/.test(url.pathname)) {
+      respondFromCacheThenNetwork(event, PAGES_CACHE)
+      return
+    } else if (/^\/((archives|page)\/.*)?$/.test(url.pathname)) {
+      respondFromNetworkThenCache(event, PAGES_CACHE)
+      return
+    }
+    respondFromCacheThenNetwork(event, ASSETS_CACHE)
+  }
 });
 
 self.addEventListener('activate', function (event) {
@@ -70,4 +51,56 @@ self.addEventListener('activate', function (event) {
       console.log("now ready to handle fetches.")
     })
   );
-});
+})
+
+function fetchFromCache(request) {
+  return caches.match(request).then(response => {
+    if (response) {
+      return response;
+    } else {
+      throw Error(`${request.url} not found in cache`)
+    }
+  })
+}
+
+function putCache(request, response, key) {
+  if (response.ok) {
+    const copy = response.clone()
+    caches.open(key).then(cache => {
+      cache.put(request, copy)
+    })
+  }
+  return response
+}
+
+function offlineResponse(request) {
+  if (request.headers.get('accept').includes('text/html')) {
+    return caches.match('offline.html')
+  }
+}
+
+function respondFromCacheThenNetwork(event, key) {
+  const request = event.request
+  event.respondWith(
+    fetchFromCache(request)
+      .catch(() => fetch(request.clone()))
+      .then(response => putCache(request, response, key))
+      .catch(() => offlineResponse(request))
+  )
+}
+
+function respondFromNetworkThenCache(event, key) {
+  const request = event.request
+  event.respondWith(
+    fetch(request.clone())
+      .then(response => putCache(request, response, key))
+      .catch(() => fetchFromCache(request))
+      .catch(() => offlineResponse(request))
+  )
+}
+
+function shouldHandleFetch(request) {
+  const url = new URL(request.url)
+  const should = request.method.toLowerCase() === 'get' && url.origin === location.origin
+  return should
+}
