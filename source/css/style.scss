@@ -2,8 +2,8 @@
 
 $monospace-font-family: "Iosevka Slab", "Andale Mono", "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
 $chinese-font-family: 'Noto Sans CJK SC', 'Source Han Sans SC', 'Source Han Sans CN', 'Inziu Roboto SC', PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft YaHei', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei;
-$base-font-family: "Noto Serif", 'Palatino Linotype', 'Book Antiqua', Palatino, Times, 'Times New Roman', Bookman, Georgia, 'New Century Schoolbook', $chinese-font-family, serif;
-$base-font-size:   17px;
+$base-font-family: 'Noto Serif', $chinese-font-family, serif;
+$base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -27,7 +27,7 @@ $on-laptop:        800px;
         @content;
     }
 }
-
+@import url(https://fonts.proxy.ustclug.org/css?family=Noto+Serif);
 @import
         "_partial/back-to-top",
         "_partial/base",
