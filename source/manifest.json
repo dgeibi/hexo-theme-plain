@@ -1,5 +1,6 @@
 {
 	"name": "dgeibi's blog",
+	"short_name": "dgeibi's blog",
 	"icons": [
 		{
 			"src": "/favicon.png",
@@ -7,6 +8,7 @@
 			"type": "image\/png"
 		}
 	],
-	"theme_color": "#ffffff",
+	"theme_color": "#000",
+	"background_color": "#fff",
 	"display": "standalone"
 }
