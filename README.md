@@ -17,8 +17,11 @@ Plain 是一个 [Hexo](https://hexo.io) 主题，基于 Pug 与 Scss 开发。
 ## 配置
 
 1. 更改**站点** `_config.yml` 中的 `theme` 字段设置为 `plain`
-2. 更改**主题** `_config.yml` 中的设置，调整主题右上角快捷链接的内容。
-3. 更改`source`目录下的图标。
+2. 更改**主题** `_config.yml` 中的设置
+    1. 调整主题右上角快捷链接的内容
+    2. 修改 twitter、github、email 相关信息
+    3. 修改 disqus 为站点的 short_name，仅日志支持评论，在日志的首部添加 `comments: false` 以禁用评论
+4. 更改`source`目录下的图标。
 
 ## 更新
 
