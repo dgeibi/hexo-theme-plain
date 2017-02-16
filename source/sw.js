@@ -2,7 +2,7 @@
 // https://github.com/14islands/vecka.14islands.com/blob/master/server/service-worker.js
 
 const ASSETS_CACHE = "assets-v3.4"
-const PAGES_CACHE = "pages-v1.1"
+const PAGES_CACHE = "pages-v1.2"
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
 const urlsToCache = [
   '/css/style.css',
