@@ -1,8 +1,8 @@
 // vecka.14islands.com/service-worker.js
 // https://github.com/14islands/vecka.14islands.com/blob/master/server/service-worker.js
 
-const ASSETS_CACHE = "assets-v3.4"
-const PAGES_CACHE = "pages-v1.2"
+const ASSETS_CACHE = "assets-v3.5"
+const PAGES_CACHE = "pages-v1.3"
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
 const urlsToCache = [
   '/css/style.css',
@@ -101,6 +101,6 @@ function respondFromNetworkThenCache(event, key) {
 
 function shouldHandleFetch(request) {
   const url = new URL(request.url)
-  const should = request.method.toLowerCase() === 'get' && url.origin === location.origin
+  const should = request.method.toLowerCase() === 'get' && url.origin === location.origin && !/^\/sw.js$/.test(url.pathname)
   return should
 }

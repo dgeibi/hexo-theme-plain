@@ -27,7 +27,7 @@ ul {
  * Basic styling
  */
 body {
-    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+    font: $base-font-weight #{$base-font-size} $base-font-family;
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
@@ -108,12 +108,8 @@ h4,
 h5,
 h6 {
     font-weight: $base-font-weight;
-    word-wrap: break-word;
-    margin: 0 0 .3em 0;
-    line-height: 1;
-    &:not(:first-child) {
-        margin-top: .7em;
-    }
+    margin: 0 0 12px;
+    letter-spacing: -1px;
 }
 
 h2 {

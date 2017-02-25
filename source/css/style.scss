@@ -27,8 +27,8 @@ $on-laptop:        800px;
         @content;
     }
 }
-@import url(https://fonts.proxy.ustclug.org/css?family=Noto+Serif);
 @import
+        "_partial/fonts",
         "_partial/back-to-top",
         "_partial/base",
         "_partial/helpers",

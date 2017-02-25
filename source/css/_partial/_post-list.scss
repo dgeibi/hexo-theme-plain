@@ -29,3 +29,7 @@
         margin-bottom: .4em;
     }
 }
+
+h3.year:not(:first-child) {
+    margin: 30px 0 10px;
+}

@@ -4,5 +4,5 @@ block content
   each post in page.posts.toArray()
     if year != post.date.year()
       - year = post.date.year()
-      h3 #{year}
+      h3.year #{year}
     +archive-item(post)
