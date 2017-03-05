@@ -7,11 +7,9 @@ if ('serviceWorker' in navigator) {
         })
 }
 
-window.addEventListener('click', function (e) {
-    var target = e.target
-    if (target.href && target.hostname !== location.hostname) {
-        e.preventDefault()
-        window.open(target.href, '_blank')
+$$(document.links).forEach(function (link) {
+    if (link.hostname != location.hostname) {
+        link.target = '_blank';
     }
 })
 
