@@ -7,23 +7,24 @@ if ('serviceWorker' in navigator) {
         })
 }
 
-$$(document.links).forEach(function (link) {
-    if (link.hostname != location.hostname) {
-        link.target = '_blank';
-    }
-})
+(function ($, $$) {
+    // $$(document.links).forEach(function (link) {
+    //     if (link.hostname != location.hostname) {
+    //         link.target = '_blank'
+    //         link.rel = 'noopener noreferrer'
+    //     }
+    // })
 
-/* add table-wrapper */
-$$('.post-content>table').forEach(function (table) {
-    var div = document.createElement("div")
-    div.className = "_table-wrapper"
-    var range = document.createRange()
-    range.selectNode(table)
-    range.surroundContents(div)
-});
+    /* add table-wrapper */
+    $$('.post-content>table').forEach(function (table) {
+        var div = document.createElement("div")
+        div.className = "_table-wrapper"
+        var range = document.createRange()
+        range.selectNode(table)
+        range.surroundContents(div)
+    })
 
-/* back to top */
-(function () {
+    /* back to top */
     var topBtn = $('[data-js-backtotop]')
     var backToTop = function () {
         if (window.pageYOffset > 100) {
@@ -35,14 +36,14 @@ $$('.post-content>table').forEach(function (table) {
     backToTop()
     window.addEventListener('scroll', backToTop)
     topBtn.addEventListener('click', $.scrollToPos)
-})()
 
-/* toc scroll */
-$$('.toc li a').forEach(function (link) {
-    link.addEventListener('click', function (event) {
-        event.preventDefault()
-        var hash = this.hash
-        $.scrollToPos(hash)
-        window.location.hash = hash
+    /* toc scroll */
+    $$('.toc li a').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault()
+            var hash = this.hash
+            $.scrollToPos(hash)
+            window.location.hash = hash
+        })
     })
-})
+})(this.$, this.$$)
