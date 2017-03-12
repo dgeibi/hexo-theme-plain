@@ -1,21 +1,27 @@
 // vecka.14islands.com/service-worker.js
 // https://github.com/14islands/vecka.14islands.com/blob/master/server/service-worker.js
-const ASSETS_CACHE = "assets-v3.8"
-const PAGES_CACHE = "pages-v1.6"
-const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
+
+/* eslint-disable no-console */
+const ASSETS_CACHE = 'assets-v3.8'
+const PAGES_CACHE = 'pages-v1.6'
+const expectedCaches = [
+  ASSETS_CACHE,
+  PAGES_CACHE,
+]
+
 const urlsToCache = [
   '/css/style.css',
   '/js/main.js',
   '/js/svg4everybody.js',
   '/icon.svg',
   '/offline.html',
-  '/manifest.json'
+  '/manifest.json',
 ]
 
-self.addEventListener('install', function (event) {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(ASSETS_CACHE)
-      .then(function (cache) {
+      .then((cache) => {
         console.log('Opened cache')
         return cache.addAll(urlsToCache)
       })
@@ -23,52 +29,49 @@ self.addEventListener('install', function (event) {
 })
 
 function matchPath(path) {
-  return (regExp) => regExp.test(path)
+  return regExp => regExp.test(path)
 }
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', (event) => {
   if (!shouldHandleFetch(event.request)) return
-  const url = new URL(event.request.url)
+  const request = event.request
+  const url = new URL(request.url)
   const match = matchPath(url.pathname)
-  if (match(/^\/(about|20\d{2})\/.*$/)) {
-    respondFromNetworkThenCache(event, PAGES_CACHE)
-  } else if (match(/^\/((archives|page)\/.*)?$/)) {
+  if (request.headers.get('accept').includes('text/html')) {
     respondFromNetworkThenCache(event, PAGES_CACHE)
   } else if (match(/^\/(css|fonts|js|assets)\/.*$/)) {
     respondFromCacheThenNetwork(event, ASSETS_CACHE)
   }
 })
 
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys.map(key => {
-          if (!expectedCaches.includes(key)) {
-            return caches.delete(key)
-          }
+        keys.map((key) => {
+          if (expectedCaches.includes(key)) return undefined
+          return caches.delete(key)
         })
       )
     ).then(() => {
-      console.log("now ready to handle fetches.")
+      console.log('now ready to handle fetches.')
     })
   )
 })
 
 function fetchFromCache(request) {
-  return caches.match(request).then(response => {
+  return caches.match(request).then((response) => {
     if (response) {
       return response
-    } else {
-      throw Error(`${request.url} not found in cache`)
     }
+    throw Error(`${request.url} not found in cache`)
   })
 }
 
 function putCache(request, response, key) {
   if (response.ok) {
     const copy = response.clone()
-    caches.open(key).then(cache => {
+    caches.open(key).then((cache) => {
       cache.put(request, copy)
     })
   }
@@ -76,9 +79,8 @@ function putCache(request, response, key) {
 }
 
 function offlineResponse(request) {
-  if (request.headers.get('accept').includes('text/html')) {
-    return caches.match('offline.html')
-  }
+  if (!request.headers.get('accept').includes('text/html')) return undefined
+  return caches.match('offline.html')
 }
 
 function respondFromCacheThenNetwork(event, key) {
