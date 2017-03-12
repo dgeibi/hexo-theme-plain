@@ -1,7 +1,7 @@
 // vecka.14islands.com/service-worker.js
 // https://github.com/14islands/vecka.14islands.com/blob/master/server/service-worker.js
 const ASSETS_CACHE = "assets-v3.8"
-const PAGES_CACHE = "pages-v1.5"
+const PAGES_CACHE = "pages-v1.6"
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
 const urlsToCache = [
   '/css/style.css',
@@ -16,25 +16,28 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(ASSETS_CACHE)
       .then(function (cache) {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        console.log('Opened cache')
+        return cache.addAll(urlsToCache)
       })
   )
 })
 
+function matchPath(path) {
+  return (regExp) => regExp.test(path)
+}
+
 self.addEventListener('fetch', function (event) {
-  if (shouldHandleFetch(event.request)) {
-    var url = new URL(event.request.url)
-    if (/^\/(about|20\d{2})\/.*$/.test(url.pathname)) {
-      respondFromCacheThenNetwork(event, PAGES_CACHE)
-      return
-    } else if (/^\/((archives|page)\/.*)?$/.test(url.pathname)) {
-      respondFromNetworkThenCache(event, PAGES_CACHE)
-      return
-    }
+  if (!shouldHandleFetch(event.request)) return
+  const url = new URL(event.request.url)
+  const match = matchPath(url.pathname)
+  if (match(/^\/(about|20\d{2})\/.*$/)) {
+    respondFromNetworkThenCache(event, PAGES_CACHE)
+  } else if (match(/^\/((archives|page)\/.*)?$/)) {
+    respondFromNetworkThenCache(event, PAGES_CACHE)
+  } else if (match(/^\/(css|fonts|js|assets)\/.*$/)) {
     respondFromCacheThenNetwork(event, ASSETS_CACHE)
   }
-});
+})
 
 self.addEventListener('activate', function (event) {
   event.waitUntil(
@@ -42,20 +45,20 @@ self.addEventListener('activate', function (event) {
       Promise.all(
         keys.map(key => {
           if (!expectedCaches.includes(key)) {
-            return caches.delete(key);
+            return caches.delete(key)
           }
         })
       )
     ).then(() => {
       console.log("now ready to handle fetches.")
     })
-  );
+  )
 })
 
 function fetchFromCache(request) {
   return caches.match(request).then(response => {
     if (response) {
-      return response;
+      return response
     } else {
       throw Error(`${request.url} not found in cache`)
     }
@@ -100,6 +103,6 @@ function respondFromNetworkThenCache(event, key) {
 
 function shouldHandleFetch(request) {
   const url = new URL(request.url)
-  const should = request.method.toLowerCase() === 'get' && url.origin === location.origin && !/^\/sw.js$/.test(url.pathname)
+  const should = request.method.toLowerCase() === 'get' && url.origin === location.origin
   return should
 }
