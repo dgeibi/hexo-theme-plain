@@ -2,12 +2,10 @@
 // https://github.com/14islands/vecka.14islands.com/blob/master/server/service-worker.js
 
 /* eslint-disable no-console */
+/* eslint-env serviceworker */
 const ASSETS_CACHE = 'assets-v3.8'
 const PAGES_CACHE = 'pages-v1.6'
-const expectedCaches = [
-  ASSETS_CACHE,
-  PAGES_CACHE,
-]
+const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
 
 const urlsToCache = [
   '/css/style.css',
