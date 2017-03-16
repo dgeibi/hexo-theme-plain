@@ -1,18 +1,16 @@
-/* eslint-env amd */
+/* eslint-env commonjs */
 function load(name, definition) {
-  var hasDefine = typeof define === 'function'
-  var hasExports = typeof module === 'object' && module.exports
-
-  if (hasDefine) {
-    define(definition)
-  } else if (hasExports) {
-    module.exports = definition()
+  var hasExports = typeof exports === 'object' && exports
+  if (hasExports) {
+    exports[name] = definition
   } else {
-    this[name] = definition()
+    this[name] = definition
   }
 }
 
-load('$', function create() {
+(function () {
+  'use strict'
+
   function $(selector, context) {
     var range = context || document
     return range.querySelector(selector)
@@ -80,5 +78,7 @@ load('$', function create() {
     }
     requestAnimationFrame(step)
   }
-  return $
-})
+
+  load('$', $)
+  load('$$', $.$)
+}())

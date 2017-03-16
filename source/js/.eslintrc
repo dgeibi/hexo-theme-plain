@@ -1,4 +1,7 @@
 {
   "root": true,
-  "extends": "dgeibi/legacy"
+  "extends": "dgeibi/legacy",
+  "rules": {
+    "func-names": 0
+  }
 }
