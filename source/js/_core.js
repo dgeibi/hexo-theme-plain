@@ -42,7 +42,7 @@
   /* toc scroll */
   $$('.toc li a').forEach(function (link) {
     link.addEventListener('click', function (event) {
-      var hash = this.hash
+      var hash = decodeURIComponent(this.hash)
       event.preventDefault()
       $.scrollToPos(hash)
       window.location.hash = hash
