@@ -27,7 +27,14 @@ self.addEventListener('install', (event) => {
 })
 
 function matchPath(path) {
-  return regExp => regExp.test(path)
+  return function match(pattern) {
+    if (typeof pattern === 'string') {
+      return endsWith(path, pattern)
+    } else if (pattern instanceof RegExp) {
+      return pattern.test(path)
+    }
+    return false
+  }
 }
 
 self.addEventListener('fetch', (event) => {
@@ -35,10 +42,15 @@ self.addEventListener('fetch', (event) => {
   const request = event.request
   const url = new URL(request.url)
   const match = matchPath(url.pathname)
+  if (match('sw.js')) return
   if (request.headers.get('accept').includes('text/html')) {
     respondFromNetworkThenCache(event, PAGES_CACHE)
   } else if (match(/^\/(css|fonts|js|assets)\/.*$/)) {
     respondFromCacheThenNetwork(event, ASSETS_CACHE)
+  } else if (match(/.+\.(svg|css|png|jpg|woff|woff2|ttf|ttc)$/)) {
+    respondFromCacheThenNetwork(event, ASSETS_CACHE)
+  } else if (match('manifest.json')) {
+    respondFromNetworkThenCache(event, ASSETS_CACHE)
   }
 })
 
@@ -105,4 +117,11 @@ function shouldHandleFetch(request) {
   const url = new URL(request.url)
   const should = request.method.toLowerCase() === 'get' && url.origin === location.origin
   return should
+}
+
+function endsWith(string, searchString) {
+  const subjectString = string.toString()
+  const position = subjectString.length - searchString.length
+  const lastIndex = subjectString.lastIndexOf(searchString, position)
+  return lastIndex !== -1 && lastIndex === position
 }

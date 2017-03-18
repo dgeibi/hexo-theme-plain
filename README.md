@@ -22,7 +22,6 @@ Plain 是一个 [Hexo](https://hexo.io) 主题，基于 Pug 与 Scss 开发。
     2. 修改 twitter、github、email 相关信息
     3. 修改 disqus 为站点的 short_name，仅日志支持评论，在日志的首部添加 `comments: false` 以禁用评论
 4. 更改`source`目录下的图标
-5. 配置/文章的修改可能需要修改 `source/sw.js` 中的 `ASSETS_CACHE`/`PAGES_CACHE` 的值，以便使更新在支持 Service Workers 的浏览器中重新缓存
 
 ## 更新
 

@@ -11,12 +11,14 @@ title #{title}
 meta(name='author', content=page.author ? page.author : config.author)
 meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport')
 meta(name="renderer" content="webkit|ie-comp|ie-stand")
-meta(name="theme-color" content="#000000")
+if theme.theme_color
+  meta(name="theme-color" content=theme.color)
 link(rel='stylesheet' href='/css/style.css' media="all")
 link(rel='alternate', type='application/atom+xml', title='RSS', href='/atom.xml')
 link(rel='sitemap', type='application/xml', title='Sitemap', href='/sitemap.xml')
 link(rel='canonical', href=url)
-link(rel="icon" type="image/png" href="/favicon.png")
-link(rel="apple-touch-icon" sizes="256x256" href="/favicon.png")
-link(rel="manifest" href="/manifest.json")
+if theme.icons.length
+  link(rel="icon" type="image/png" href=theme.icons[0].src)
+if theme.manifest
+  link(rel="manifest" href="/manifest.json")
 script(src="/js/main.js" defer)

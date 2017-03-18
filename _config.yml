@@ -1,8 +1,28 @@
+## 导航栏链接
 menu:
-  archives: /archives/
-  about: /about/
-  Feed: /atom.xml
+  archives: "/archives/"
+  about: "/about/"
+  Feed: "/atom.xml"
+  Note: "https://note.dgeibi.xyz"
+
+## About
 twitter: dgeibi
 github: dgeibi
 email: png.inside@gmail.com
+
+## 用于生成 manifest.json
+manifest: true
+
+## chrome 手机端工具栏颜色
+theme_color: "#5A5A5A"
+
+## display: fullscreen	standalone minimal-ui browser
+display: "browser"
+
+icons:
+- src: "/favicon.png"
+  sizes: "256x256"
+  type: "image\/png"
+
+## 如需使用 disqus，取消注释并修改id
 # disqus: dgeibi
