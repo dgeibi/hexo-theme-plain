@@ -17,12 +17,11 @@ manifest: true
 theme_color: "#5A5A5A"
 
 ## display: fullscreen	standalone minimal-ui browser
-display: "browser"
+display: "standalone"
 
 icons:
 - src: "/favicon.png"
   sizes: "256x256"
-  type: "image\/png"
 
 ## 如需使用 disqus，取消注释并修改id
 # disqus: dgeibi
