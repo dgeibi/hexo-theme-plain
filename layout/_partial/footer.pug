@@ -4,17 +4,22 @@ each post in site.posts.toArray()
   - min = Math.min(post.date.year(), min)
   - max = Math.max(post.date.year(), max)
 footer.site-footer
-  section
-    small
+    p.copyright
       | &copy; #{min}-#{max}
-      |  #{config.author} 
+      |
+      | #{config.author}
+      |
       a(href="https://creativecommons.org/licenses/by/4.0/") CC BY 4.0
-  section
-    small
-      | Powered by 
-      a(href="https://hexo.io") Hexo
-      | . Theme by 
+    p.copyright
+      | Powered by
+      |
+      a(href="https://hexo.io") Hexo.
+      |
+      |
+      a(href="https://github.com/dgeibi/hexo-theme-plain") Theme
+      |
+      | by
+      |
       a(href="https://github.com/dgeibi") dgeibi
-      | .
 
-  
+

@@ -21,7 +21,7 @@ display: "standalone"
 
 icons:
 - src: "/favicon.png"
-  sizes: "256x256"
+  sizes: "192x192"
 
 ## 如需使用 disqus，取消注释并修改id
 # disqus: dgeibi

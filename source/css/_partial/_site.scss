@@ -32,6 +32,12 @@
     text-align: center;
 }
 
+p.copyright {
+  margin: 0;
+  line-height: 1.5;
+  font-size: smaller;
+}
+
 .site-home {
     > .one {
         width: 60%;
@@ -44,7 +50,7 @@
     }
 
     @include media-query($on-palm) {
-        >.one,>.two {            
+        >.one,>.two {
             width: 95%;
             float: left;
         }
