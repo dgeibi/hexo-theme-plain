@@ -1,7 +1,7 @@
 @charset "utf-8";
 
-$monospace-font-family: "Iosevka Slab", "Andale Mono", "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
-$chinese-font-family: 'Noto Sans CJK SC', 'Source Han Sans SC', 'Source Han Sans CN', 'Inziu Roboto SC', PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft YaHei', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei;
+$monospace-font-family: "Iosevka Slab", Consolas, Monaco, monospace;
+$chinese-font-family: 'Noto Sans SC', PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft YaHei';
 $base-font-family: 'Noto Serif', $chinese-font-family, serif;
 $base-font-size:   16px;
 $base-font-weight: 400;

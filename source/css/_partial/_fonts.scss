@@ -5,10 +5,84 @@
   src: local('Noto Serif'), local('NotoSerif'), url(/fonts/fVu1p3782bqS2z-CaJvp9iEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
+
 @font-face {
   font-family: 'Noto Serif';
   font-style: normal;
   font-weight: 400;
   src: local('Noto Serif'), local('NotoSerif'), url(/fonts/eCpfeMZI7q4jLksXVRWPQ_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 100;
+  src:  local(Noto Sans SC Thin),
+        local(Noto Sans CJK SC Thin),
+        local(Source Han Sans CN ExtraLight);
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 200;
+  src: local(Source Han Sans CN Light);
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 300;
+  src:  local(Noto Sans SC Light),
+        local(Noto Sans CJK SC Light),
+        local(Source Han Sans CN Normal);
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 350;
+  src: local(Noto Sans CJK DemiLight),
+       local(Noto Sans CJK SC DemiLight);
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-weight: 400;
+    font-style: normal;
+    src: local(Noto Sans SC Regular),
+         local(Noto Sans CJK SC Regular),
+         local(Source Han Sans CN Regular),
+         local(Inziu Iosevka SC Regular),
+         local(Inziu Roboto SC Regular);
+}
+
+@font-face {
+   font-family: 'Noto Sans SC';
+   font-style: normal;
+   font-weight: 500;
+   src: local(Noto Sans SC Medium),
+        local(Noto Sans CJK SC Medium),
+        local(Source Han Sans CN Medium);
+}
+
+@font-face {
+   font-family: 'Noto Sans SC';
+   font-style: normal;
+   font-weight: 700;
+   src: local(Noto Sans SC Bold),
+        local(Noto Sans CJK SC Bold),
+        local(Source Han Sans CN Bold),
+        local(Inziu Iosevka SC Bold),
+        local(Inziu Roboto SC Bold);
+}
+
+@font-face {
+   font-family: 'Noto Sans SC';
+   font-style: normal;
+   font-weight: 900;
+   src: local(Noto Sans SC Black),
+        local(Noto Sans CJK SC Black),
+        local(Source Han Sans CN Heavy);
 }
