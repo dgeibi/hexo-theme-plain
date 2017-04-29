@@ -3,7 +3,7 @@
 
 /* eslint-disable no-console */
 /* eslint-env serviceworker */
-const ASSETS_CACHE = 'assets-v4.0'
+const ASSETS_CACHE = 'assets-v4.1'
 const PAGES_CACHE = 'pages-v1.7'
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
 
@@ -23,6 +23,7 @@ self.addEventListener('install', (event) => {
         console.log('Opened cache')
         return cache.addAll(urlsToCache)
       })
+      .then(self.skipWaiting())
   )
 })
 
@@ -56,16 +57,18 @@ self.addEventListener('fetch', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.map((key) => {
-          if (expectedCaches.includes(key)) return undefined
-          return caches.delete(key)
-        })
+    caches
+      .keys()
+      .then(keys =>
+        Promise.all(
+          keys.map((key) => {
+            if (expectedCaches.includes(key)) return undefined
+            return caches.delete(key)
+          })
+        )
       )
-    ).then(() => {
-      console.log('now ready to handle fetches.')
-    })
+      .then(() => console.log('now ready to handle fetches.'))
+      .then(() => self.clients.claim())
   )
 })
 
