@@ -1,12 +1,14 @@
-const fs = require('hexo-fs')
+var fs = require('hexo-fs');
+var path = require('path');
 
-hexo.extend.generator.register('concatScripts', () =>
-  ({
+hexo.extend.generator.register('concatScripts', function concatScripts() {
+  return {
     path: 'js/main.js',
-    data() {
-      const source = `themes/${hexo.config.theme}/source`
-      const core = fs.readFileSync(`${source}/js/_core.js`)
-      const Util = fs.readFileSync(`${source}/js/_Util.js`)
-      return Util.concat([core])
-    },
-  }))
+    data: function concat() {
+      var source = path.join('themes', hexo.config.theme, 'source', 'js');
+      var core = fs.readFileSync(path.join(source, '_core.js'));
+      var Util = fs.readFileSync(path.join(source, '_Util.js'));
+      return Util.concat([core]);
+    }
+  };
+});

@@ -1,0 +1,24 @@
+if page.comments
+  if theme.disqus
+    #disqus_thread
+    script.
+      var disqus_shortname = '#{theme.disqus}'
+      var disqus_identifier = '#{page.path}'
+      var disqus_title = '#{page.title}'
+      var disqus_url = '#{config.url}/#{page.path}'
+      ;(function() {
+        var s = document.createElement('script')
+        s.async = true
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js'
+        ;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s)
+      })()
+  if theme.gentie_productKey
+    #cloud-tie-wrapper.cloud-tie-wrapper
+    script.
+      var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: '#{page.path}',
+        productKey: '#{theme.gentie_productKey}',
+        target: "cloud-tie-wrapper"
+      };
+    script(src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js")

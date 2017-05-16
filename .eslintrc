@@ -3,8 +3,5 @@
   "env": {
     "browser": true
   },
-  "extends": "dgeibi",
-  "globals": {
-    "hexo": false
-  }
+  "extends": "dgeibi"
 }
