@@ -23,29 +23,16 @@ $underline-color: $grey-color;
         > a {
             color: darken($brand-color, 10%);
         }
-
-        > a:hover {
-            color: $brand-color;
-        }
     }
 
     > p {
         line-height: 1.7;
     }
 
+    a:hover {
+      text-decoration: underline;
+    }
     a {
-        background: -webkit-linear-gradient($underline-color, $underline-color) no-repeat;
-        background: -o-linear-gradient($underline-color, $underline-color) no-repeat;
-        background: linear-gradient($underline-color, $underline-color) no-repeat;
-        background-size: 100% 1px;
-        background-position: 0 1.15em;
-        text-shadow: .05em 0 white, -.05em 0 white;
-        &:hover {
-            background: -webkit-linear-gradient($brand-color, $brand-color) no-repeat;
-            background: -o-linear-gradient($brand-color, $brand-color) no-repeat;
-            background: linear-gradient($brand-color, $brand-color) no-repeat;
-            background-size: 100% 1px;
-            background-position: 0 1.15em;
-        }
+      color: $brand-color;
     }
 }
