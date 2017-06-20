@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-env serviceworker */
 
-const ASSETS_CACHE = 'assets-v5.0';
+const ASSETS_CACHE = 'assets-v5.1';
 const PAGES_CACHE = 'pages-v1.7';
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE];
 
