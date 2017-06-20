@@ -12,7 +12,7 @@ Plain 是一个 [Hexo](https://hexo.io) 主题，基于 Pug 与 Scss 开发。
 
     $ cd your-hexo-site
     $ git clone https://github.com/dgeibi/hexo-theme-plain.git themes/plain
-    $ npm install hexo-render-pug hexo-renderer-sass --save
+    $ npm install hexo-render-pug --save
 
 ## 配置
 
