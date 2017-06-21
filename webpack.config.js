@@ -7,7 +7,7 @@ const rules = [
   {
     test: /\.js[x]?$/,
     use: [{ loader: 'babel-loader' }],
-    include: [path.resolve('src')],
+    include: [path.resolve(__dirname, 'src')],
   },
   {
     test: /\.scss$/,
@@ -27,24 +27,24 @@ const rules = [
     }),
   },
 ];
+const plugins = [
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+    },
+    comments: false,
+    'screw-ie8': true,
+  }),
+  new ExtractTextPlugin('../css/style.css'),
+];
 
 module.exports = (env = {}) => {
-  const plugins = env.production ? [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      comments: false,
-      'screw-ie8': true,
-    }),
-  ]
-    : [];
-  plugins.push(new ExtractTextPlugin('../css/style.css'));
+  const dir = env.dir || path.resolve(__dirname, 'source/js');
   return {
     devtool: 'cheap-module-source-map',
-    entry: './src/main.js',
+    entry: path.resolve(__dirname, 'src/main.js'),
     output: {
-      path: path.resolve(__dirname, 'source/js'),
+      path: dir,
       filename: 'main.js',
       publicPath: 'js',
     },

@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "fix": "eslint . --fix",
-    "start": "webpack --env.production"
+    "start": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
