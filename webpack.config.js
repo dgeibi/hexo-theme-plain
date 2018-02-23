@@ -15,13 +15,23 @@ const rules = [
       fallback: 'style-loader',
       use: [
         {
-          loader: 'css-loader'
+          loader: 'css-loader',
+          options: {
+            minimize: true,
+            sourceMap: true
+          }
         },
         {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true
+          }
         },
         {
-          loader: 'sass-loader'
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
         }
       ]
     })
@@ -33,7 +43,8 @@ const plugins = [
       warnings: false
     },
     comments: false,
-    'screw-ie8': true
+    'screw-ie8': true,
+    sourceMap: true
   }),
   new ExtractTextPlugin('../css/style.css')
 ]
@@ -41,7 +52,7 @@ const plugins = [
 module.exports = (env = {}) => {
   const dir = env.dir || path.resolve(__dirname, 'source/js')
   return {
-    devtool: 'cheap-module-source-map',
+    devtool: 'source-map',
     entry: path.resolve(__dirname, 'src/main.js'),
     output: {
       path: dir,

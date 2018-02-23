@@ -14,7 +14,6 @@ figure.highlight,
     display: block;
   }
   // Reset for tag `pre` and  for class `.gutter`, `.code`, `.tag`
-  pre,
   .gutter,
   .code,
   .tag {
@@ -24,6 +23,11 @@ figure.highlight,
     // To override cursor attribute of `.tag` components
     cursor: text;
   }
+
+  pre {
+    padding: 1px;
+  }
+
   // To align line number and line of code regardless if there is a scroll bar or not
   .gutter,
   .code {
