@@ -1,13 +1,13 @@
-import $ from '../utils';
+import $ from '../utils'
 
-const topBtn = $('[data-js-backtotop]');
+const topBtn = $('[data-js-backtotop]')
 function backToTop() {
   if (window.pageYOffset > 100) {
-    topBtn.classList.add('show');
+    topBtn.classList.add('show')
   } else {
-    topBtn.classList.remove('show');
+    topBtn.classList.remove('show')
   }
 }
-backToTop();
-window.addEventListener('scroll', backToTop);
-topBtn.addEventListener('click', $.scroll);
+backToTop()
+window.addEventListener('scroll', backToTop)
+topBtn.addEventListener('click', $.scroll)

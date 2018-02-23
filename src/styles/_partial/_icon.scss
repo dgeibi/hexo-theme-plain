@@ -2,13 +2,13 @@
  * Icons
  */
 .icon {
-    font-size: 35px;
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    vertical-align: middle;
-    fill: $text-color;
-    &:hover {
-        fill: $brand-color;
-    }
+  font-size: 35px;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  fill: $text-color;
+  &:hover {
+    fill: $brand-color;
+  }
 }

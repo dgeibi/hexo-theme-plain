@@ -9,22 +9,5 @@ twitter:
 github:
 email:
 
-## 是否生成 manifest.json
-manifest: false
-
-## chrome 手机端工具栏颜色
-theme_color: "#5A5A5A"
-
-## display: fullscreen	standalone minimal-ui browser
-display: "standalone"
-
-# 图标
-icons:
-- src: "/favicon.png"
-  sizes: "192x192"
-
 # disqus short_name
 disqus:
-
-# 网易云跟帖
-gentie_productKey:

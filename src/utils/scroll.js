@@ -1,51 +1,53 @@
 /* https://gist.github.com/joshcanhelp/a3a669df80898d4097a1e2c01dea52c1 */
 function scroll(scrollPosition, scrollDuration) {
-  let start;
-  let position;
-  let duration = 500;
+  let start
+  let position
+  let duration = 500
 
   switch (typeof scrollPosition) {
     case 'string': {
-      const target = document.querySelector(scrollPosition);
+      const target = document.querySelector(scrollPosition)
       if (target) {
-        position = window.pageYOffset + target.getBoundingClientRect().top;
+        position = window.pageYOffset + target.getBoundingClientRect().top
       } else {
-        throw new Error(`error: No element found with the selector "${scrollPosition}"`);
+        throw new Error(
+          `error: No element found with the selector "${scrollPosition}"`
+        )
       }
-      break;
+      break
     }
     case 'number':
       if (scrollPosition >= 0) {
-        position = scrollPosition;
+        position = scrollPosition
       } else {
-        throw new Error('error: scrollPosition should not be a negative number');
+        throw new Error('error: scrollPosition should not be a negative number')
       }
-      break;
+      break
     default:
-      position = 0;
+      position = 0
   }
 
   if (typeof scrollDuration === 'number' && scrollDuration > 0) {
-    duration = scrollDuration;
+    duration = scrollDuration
   }
 
-  const distanceSum = window.pageYOffset - position;
+  const distanceSum = window.pageYOffset - position
 
   function step(timestamp) {
     if (!start) {
-      start = timestamp;
-      requestAnimationFrame(step);
-      return;
+      start = timestamp
+      requestAnimationFrame(step)
+      return
     }
-    const percent = Math.min(1, (timestamp - start) / duration);
-    const distance = (1 - percent) * distanceSum;
-    const moveStep = position + distance;
-    window.scrollTo(0, moveStep);
+    const percent = Math.min(1, (timestamp - start) / duration)
+    const distance = (1 - percent) * distanceSum
+    const moveStep = position + distance
+    window.scrollTo(0, moveStep)
     if (percent < 1) {
-      requestAnimationFrame(step);
+      requestAnimationFrame(step)
     }
   }
-  requestAnimationFrame(step);
+  requestAnimationFrame(step)
 }
 
-export default scroll;
+export default scroll

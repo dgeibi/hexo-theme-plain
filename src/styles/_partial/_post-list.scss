@@ -3,33 +3,33 @@
  */
 
 .post-item {
-    font-size: 20px;
-    > .meta {
-        font-size: .8em;
-    }
-    &:not(:last-child){
-        margin-bottom: .7em;
-    }
+  font-size: 20px;
+  > .meta {
+    font-size: 0.8em;
+  }
+  &:not(:last-child) {
+    margin-bottom: 0.7em;
+  }
 }
 
 .archive-item {
-    font-size: 19px;
-    position: relative;
-    > .meta {
-        position: absolute;
-        font-size: .7em;
-        line-height: 2;
-    }
+  font-size: 19px;
+  position: relative;
+  > .meta {
+    position: absolute;
+    font-size: 0.7em;
+    line-height: 2;
+  }
 
-    > .linkwrapper {
-        margin-left: 3em;
-    }
+  > .linkwrapper {
+    margin-left: 3em;
+  }
 
-    &:not(:last-child){
-        margin-bottom: .4em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.4em;
+  }
 }
 
 h3.year:not(:first-child) {
-    margin: 30px 0 10px;
+  margin: 30px 0 10px;
 }

@@ -2,37 +2,37 @@
  * Posts
  */
 .post {
-     > .post-header,
-    > .post-content {
-        margin-bottom: $spacing-unit;
-    }
+  > .post-header,
+  > .post-content {
+    margin-bottom: $spacing-unit;
+  }
 }
 
 .post-title {
-    font-size: 36px;
-    letter-spacing: -1px;
+  font-size: 36px;
+  letter-spacing: -1px;
 }
 
 $underline-color: $grey-color;
 .post-content {
-     > h2,
-     > h4,
-    > h3 {
-        color: darken($brand-color, 10%);
+  > h2,
+  > h4,
+  > h3 {
+    color: darken($brand-color, 10%);
 
-        > a {
-            color: darken($brand-color, 10%);
-        }
+    > a {
+      color: darken($brand-color, 10%);
     }
+  }
 
-    > p {
-        line-height: 1.7;
-    }
+  > p {
+    line-height: 1.7;
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
-    a {
-      color: $brand-color;
-    }
+  a:hover {
+    text-decoration: underline;
+  }
+  a {
+    color: $brand-color;
+  }
 }

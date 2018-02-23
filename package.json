@@ -1,13 +1,21 @@
 {
   "name": "hexo-theme-plain",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "a plain hexo theme",
   "private": true,
   "scripts": {
     "fix": "eslint . --fix",
-    "start": "webpack",
-    "watch": "webpack --watch"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "precommit": "lint-staged",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,md,scss}\" \"**/.*rc\""
   },
+  "browserslist": [
+    "> 3% in CN",
+    "ie 10",
+    "last 2 versions"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dgeibi/hexo-theme-plain.git"
@@ -23,22 +31,36 @@
   },
   "homepage": "https://github.com/dgeibi/hexo-theme-plain#readme",
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.0",
-    "babel-preset-env": "^1.5.2",
-    "css-loader": "^0.28.4",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.1.1",
-    "eslint-config-dgeibi": "dgeibi/eslint-config-dgeibi",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-no-async-without-await": "^1.2.0",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "node-sass": "^4.5.3",
-    "postcss-csso": "^2.0.0",
-    "postcss-loader": "^2.0.6",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "autoprefixer": "^8.0.0",
+    "babel-loader": "^8.0.0-beta.0",
+    "css-loader": "^0.28.10",
+    "eslint": "^4.18.0",
+    "eslint-config-dgeibi": "^4.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.0",
+    "prettier": "^1.10.2",
     "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
+    "style-loader": "^0.20.2",
     "webpack": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{md,scss}": [
+      "prettier --write",
+      "git add"
+    ],
+    ".*rc": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
