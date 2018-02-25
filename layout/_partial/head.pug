@@ -13,12 +13,12 @@ meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-sca
 meta(name="renderer" content="webkit|ie-comp|ie-stand")
 if theme.theme_color
   meta(name="theme-color" content=theme.theme_color)
-link(rel='stylesheet' href='/css/style.css' media="all")
-link(rel='alternate', type='application/atom+xml', title='RSS', href='/atom.xml')
-link(rel='sitemap', type='application/xml', title='Sitemap', href='/sitemap.xml')
+if theme.rss
+  link(rel='alternate', type=theme.rss.type, title='RSS', href=theme.rss.href)
+if theme.sitemap
+  link(rel='sitemap', type=theme.sitemap.type, title='Sitemap', href=theme.sitemap.href)
 link(rel='canonical', href=url)
-if theme.icons && theme.icons.length
-  link(rel="icon" type="image/png" href=theme.icons[0].src)
-if theme.manifest
-  link(rel="manifest" href="/manifest.json")
-script(src="/js/main.js" defer)
+if theme.favicon
+  link(rel="icon" type=theme.favicon.type href=theme.favicon.href)
+link(rel='stylesheet' href=site.themeAssets['main.css'])
+script(src=site.themeAssets['main.js'] defer)

@@ -26,7 +26,9 @@ ul {
  * Basic styling
  */
 body {
-  font: $base-font-weight #{$base-font-size} $base-font-family;
+  font-weight: $base-font-weight;
+  font-size: #{$base-font-size};
+  font-family: $base-font-family;
   color: $text-color;
   background-color: $background-color;
   -webkit-text-size-adjust: 100%;
@@ -36,13 +38,6 @@ body {
   font-kerning: normal;
   overflow-x: hidden;
   overflow-y: scroll;
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
 }
 
 /**
@@ -56,6 +51,11 @@ ol,
 p,
 ul {
   @extend ._vertical-rhythm;
+}
+
+// ie
+main {
+  display: block;
 }
 
 /**

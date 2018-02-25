@@ -1,3 +1,4 @@
+import './polyfill'
 import './operations/back-to-top'
 import './operations/toc'
 import './operations/add-table-wrapper'
