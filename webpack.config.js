@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
+const WebpackChunkHash = require('webpack-chunk-hash')
 
 module.exports = (env = {}) => {
   const outputDir =
@@ -65,7 +66,8 @@ module.exports = (env = {}) => {
       new ExtractTextPlugin(dev ? 'main.css' : 'main.[contenthash:8].css'),
       new ManifestPlugin({
         publicPath: '/assets/'
-      })
+      }),
+      new WebpackChunkHash()
     ]
   }
 }
