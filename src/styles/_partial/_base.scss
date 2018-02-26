@@ -160,26 +160,33 @@ tt {
   font-size: 1em;
 }
 
+:not(pre) > code {
+  padding: 0 3px;
+  background: $code-background-color;
+}
+
+pre {
+  background: $code-background-color;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
 code,
 pre {
+  color: black;
+  line-height: 1.5;
+  text-shadow: 0 1px white;
+  hyphens: none;
   font-size: 16px;
-  border-radius: 2px;
-  background-color: $code-background-color;
-}
-
-code {
-  padding: 1px 5px;
-}
-
-pre {
-  padding: 8px 12px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  > code {
-    border: 0;
-    padding-right: 0;
-    padding-left: 0;
-  }
+  border-radius: 0.3em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
 }
 
 /**
