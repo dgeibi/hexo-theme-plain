@@ -189,6 +189,14 @@ pre {
   tab-size: 4;
 }
 
+pre::selection,
+pre ::selection,
+code::selection,
+code ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
 /**
  * Tables
  */
